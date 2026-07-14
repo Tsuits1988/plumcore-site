@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plumcore | Commercial & Industrial Mechanical Contractor</title>
+  <style>
+    :root {
+      --navy: #0d1b2e;
+      --navy-mid: #162944;
+      --blue: #1a4a7a;
+      --accent: #e87020;
+      --accent-dark: #c05c10;
+      --light: #f4f6f9;
+      --gray: #6b7280;
+      --white: #ffffff;
+      --border: #dde1e8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #1a1a2e;
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--navy);
+      z-index: 1000;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      background: var(--accent);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #b0bec5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 4px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--accent-dark) !important; color: white !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(to right, rgba(13,27,46,0.92) 0%, rgba(13,27,46,0.7) 60%, rgba(13,27,46,0.4) 100%),
+        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: #cbd5e1;
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: white;
+      padding: 0.9rem 2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--accent); background: rgba(232,112,32,0.1); }
+
+    /* STATS BAR */
+    .stats-bar {
+      background: var(--navy-mid);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.75rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .stat-item { padding: 0.5rem; }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: #90a4b7;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      max-width: 580px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+    }
+
+    /* SERVICES */
+    #services { background: var(--light); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 8px;
+      padding: 2rem;
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--accent);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .service-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: rgba(232,112,32,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.6rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-card p {
+      font-size: 0.92rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ABOUT */
+    #about { background: white; }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      background: var(--navy);
+      color: white;
+      padding: 1rem 1.5rem;
+      border-radius: 6px;
+      border-left: 4px solid var(--accent);
+    }
+
+    .about-badge strong {
+      display: block;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+
+    .about-badge span { font-size: 0.82rem; color: #90a4b7; }
+
+    .about-text .section-sub { margin-bottom: 1.5rem; }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .check-list li::before {
+      content: '✓';
+      background: var(--accent);
+      color: white;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* WHY US */
+    #why { background: var(--navy); }
+
+    #why .section-title { color: white; }
+    #why .section-sub { color: #90a4b7; }
+    #why .section-label { color: var(--accent); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .why-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: background 0.2s;
+    }
+
+    .why-card:hover { background: rgba(255,255,255,0.07); }
+
+    .why-num {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--accent);
+      opacity: 0.6;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .why-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 0.6rem;
+    }
+
+    .why-card p { font-size: 0.9rem; color: #90a4b7; line-height: 1.65; }
+
+    /* CAREERS */
+    #careers { background: var(--light); }
+
+    .careers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .careers-text h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .careers-text p {
+      font-size: 0.95rem;
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .perks-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .perks-list li {
+      font-size: 0.92rem;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .perks-list li::before {
+      content: '→';
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    /* FORM */
+    .application-form {
+      background: white;
+      border-radius: 10px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    .application-form h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .application-form .form-sub {
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #374151;
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      padding: 0.65rem 0.9rem;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: #1a1a2e;
+      transition: border-color 0.2s;
+      background: var(--light);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
+    }
+
+    .form-group textarea { resize: vertical; min-height: 90px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.9rem;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .form-submit:hover { background: var(--accent-dark); }
+
+    /* CONTACT */
+    #contact { background: white; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(232,112,32,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--gray);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-item p, .contact-item a {
+      font-size: 0.95rem;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover { color: var(--accent); }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-form input,
+    .contact-form textarea {
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      padding: 0.75rem 1rem;
+      font-size: 0.92rem;
+      font-family: inherit;
+      background: var(--light);
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: white;
+    }
+
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+
+    /* FOOTER */
+    footer {
+      background: var(--navy);
+      border-top: 3px solid var(--accent);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      color: #7a90a8;
+      line-height: 1.7;
+      margin-top: 0.75rem;
+      max-width: 320px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #90a4b7;
+      margin-bottom: 1rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .footer-col ul li a {
+      color: #7a90a8;
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--accent); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p { font-size: 0.82rem; color: #4a6070; }
+
+    .bbb-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: #4a6070;
+    }
+
+    .bbb-badge span {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      font-weight: 600;
+      color: #90a4b7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .about-grid, .careers-grid, .contact-grid, .why-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .form-row { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">
+      <div class="logo-mark">PC</div>
+      <span class="logo-text">Plumcore</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#careers">Careers</a></li>
+      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-content">
+    <span class="hero-eyebrow">Commercial &amp; Industrial Mechanical</span>
+    <h1>Built on <span>Expertise.</span><br>Driven by Precision.</h1>
+    <p>Plumcore delivers commercial and industrial plumbing, HVAC, gas fitting, and process piping solutions across Alabama. When the job demands technical excellence, contractors trust Plumcore.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Work With Us</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-number">20+</span>
+      <span class="stat-label">Years in Service</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">AL</span>
+      <span class="stat-label">Statewide Coverage</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">4</span>
+      <span class="stat-label">Core Disciplines</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">BBB</span>
+      <span class="stat-label">Accredited Business</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What We Do</p>
+    <h2 class="section-title">Core Capabilities</h2>
+    <p class="section-sub">We specialize in the mechanical systems that keep commercial and industrial facilities running — from ground-up construction to complex retrofits.</p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Commercial &amp; Industrial Plumbing</h3>
+        <p>Full-scope plumbing for commercial buildings, industrial facilities, and multi-site projects. We handle large-format systems with the precision and reliability that general contractors expect.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">❄️</div>
+        <h3>HVAC Systems</h3>
+        <p>Design, installation, and mechanical coordination for heating, ventilation, and air conditioning systems in commercial and industrial environments.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔥</div>
+        <h3>Gas Fitting</h3>
+        <p>Licensed gas fitting for commercial kitchens, industrial processes, boiler systems, and infrastructure. Safety-compliant work from licensed tradespeople.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Process Piping</h3>
+        <p>Engineered piping systems for manufacturing, chemical, and industrial process facilities. We work from drawings or collaborate with project engineers from the ground up.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏗️</div>
+        <h3>Trenchless Pipe Lining</h3>
+        <p>Restore aging sewer and drain lines without excavation. Our trenchless solutions minimize disruption to your facility and surrounding infrastructure.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚰</div>
+        <h3>Utilities &amp; Site Work</h3>
+        <p>Underground utilities, site drainage, and wet utility coordination for commercial development and industrial campus projects throughout Alabama.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80" alt="Industrial pipe work" />
+        <div class="about-badge">
+          <strong>Gardendale, AL</strong>
+          <span>Serving all of Alabama</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">About Plumcore</p>
+        <h2 class="section-title">The Mechanical Contractor That Delivers</h2>
+        <p class="section-sub">Based in Gardendale, Alabama, Plumcore has built a reputation among general contractors and project owners for technical expertise, reliable execution, and a team that shows up ready to work.</p>
+        <ul class="check-list">
+          <li>Licensed and insured mechanical contractor serving commercial and industrial sectors</li>
+          <li>BBB Accredited — committed to integrity and professional standards</li>
+          <li>Experienced crews capable of handling large, complex, multi-trade projects</li>
+          <li>Collaborative approach with GCs, project managers, and engineers</li>
+          <li>Safety-first culture with OSHA-compliant jobsite practices</li>
+          <li>Available Monday–Friday, 7:00 AM – 5:00 PM | 205-631-4343</li>
+        </ul>
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-inner">
+    <p class="section-label">Why Plumcore</p>
+    <h2 class="section-title">What Sets Us Apart</h2>
+    <p class="section-sub">Contractors choose Plumcore because we bring the technical depth and crew reliability that complex projects demand.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">01</div>
+        <h3>Multi-Trade Expertise</h3>
+        <p>Plumbing, HVAC, gas, and process piping under one contractor means fewer handoffs, cleaner coordination, and a single point of accountability on your project.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
+        <h3>Commercial-Grade Execution</h3>
+        <p>We work at commercial and industrial scale. Our crews are experienced in the pace, documentation, and coordination demands of major construction projects.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
+        <h3>Skilled, Consistent Workforce</h3>
+        <p>Our tradespeople are vetted, trained, and committed to quality workmanship. We don't staff up with unknown labor — our team knows how we work.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
+        <h3>Trenchless Capability</h3>
+        <p>Our trenchless pipe lining expertise adds value on projects where excavation would mean cost overruns or facility disruption. Not every contractor offers this.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">05</div>
+        <h3>Alabama-Based, Statewide Reach</h3>
+        <p>Headquartered in Gardendale, we operate across Alabama. Local knowledge, regional reach, and no out-of-state logistics headaches.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">06</div>
+        <h3>Professional Standards</h3>
+        <p>BBB accredited and fully licensed. We carry proper insurance, maintain safety compliance, and document our work to the standards GCs and owners expect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREERS -->
+<section id="careers">
+  <div class="section-inner">
+    <p class="section-label">Join the Team</p>
+    <h2 class="section-title">Work at Plumcore</h2>
+
+    <div class="careers-grid">
+      <div class="careers-text">
+        <h3>We're Looking for Skilled Tradespeople</h3>
+        <p>Plumcore is always interested in connecting with experienced plumbers, pipefitters, HVAC technicians, and laborers who take pride in their craft. We work on meaningful commercial and industrial projects across Alabama.</p>
+        <p>Whether you're a journeyman looking for steady commercial work or a foreman ready to lead crews on large-scale projects, we want to hear from you.</p>
+        <ul class="perks-list">
+          <li>Competitive pay commensurate with experience</li>
+          <li>Consistent commercial and industrial project pipeline</li>
+          <li>Work with a team that values craft and professionalism</li>
+          <li>Gardendale-based with projects statewide</li>
+          <li>Monday–Friday schedule, 7:00 AM – 5:00 PM</li>
+        </ul>
+      </div>
+
+      <div class="application-form">
+        <h3>Apply Now</h3>
+        <p class="form-sub">Fill out the form below and we'll be in touch.</p>
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="first_name">First Name *</label>
+              <input type="text" id="first_name" name="first_name" required placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name *</label>
+              <input type="text" id="last_name" name="last_name" required placeholder="Smith" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="(205) 555-0100" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="john@email.com" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="position">Position / Trade *</label>
+            <select id="position" name="position" required>
+              <option value="" disabled selected>Select a trade or role…</option>
+              <option>Commercial Plumber</option>
+              <option>Pipefitter</option>
+              <option>HVAC Technician</option>
+              <option>Gas Fitter</option>
+              <option>Foreman / Crew Lead</option>
+              <option>Laborer / Helper</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="experience">Years of Experience &amp; Relevant Background</label>
+            <textarea id="experience" name="experience" placeholder="Briefly describe your experience, certifications, or licenses…"></textarea>
+          </div>
+          <button type="submit" class="form-submit">Submit Application</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Let's Talk About Your Project</h2>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p style="font-size:1rem; color:var(--gray); line-height:1.7; margin-bottom:0.5rem;">
+          Whether you're a general contractor looking for a reliable mechanical sub or an owner planning a new facility, reach out and let's see how Plumcore can support your project.
+        </p>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <h4>Address</h4>
+            <p>2605 Decatur Highway<br>Gardendale, AL 35071</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <h4>Phone</h4>
+            <a href="tel:2056314343">(205) 631-4343</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📬</div>
+          <div>
+            <h4>Mailing Address</h4>
+            <p>PO Box 1188<br>Gardendale, AL 35071</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Monday – Friday<br>7:00 AM – 5:00 PM</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="text" name="company" placeholder="Company / Organization" />
+        <input type="email" name="email" placeholder="Email Address" required />
+        <input type="tel" name="phone" placeholder="Phone Number" />
+        <textarea name="message" placeholder="Tell us about your project or inquiry…" required></textarea>
+        <button type="submit" class="btn-primary" style="border:none; cursor:pointer; text-align:center; width:100%;">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo" style="margin-bottom:0.75rem;">
+          <div class="logo-mark">PC</div>
+          <span class="logo-text">Plumcore</span>
+        </div>
+        <p>Commercial and industrial mechanical contractor based in Gardendale, Alabama. Plumbing, HVAC, gas fitting, process piping, and trenchless pipe lining — statewide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Commercial Plumbing</a></li>
+          <li><a href="#services">HVAC Systems</a></li>
+          <li><a href="#services">Gas Fitting</a></li>
+          <li><a href="#services">Process Piping</a></li>
+          <li><a href="#services">Trenchless Lining</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Plumcore</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#careers">Careers</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="tel:2056314343">(205) 631-4343</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Plumcore, Inc. All rights reserved. | Gardendale, AL 35071</p>
+      <div class="bbb-badge">
+        <span>BBB Accredited</span>
+        Business
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
