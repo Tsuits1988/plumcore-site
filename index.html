@@ -250,42 +250,6 @@
     }
     .industry-tile h4 { font-size: 0.95rem; font-weight: 700; }
 
-    /* LICENSING */
-    .licensing .wrap {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-    }
-    .license-card {
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      padding: 1.8rem 2rem;
-      background: var(--paper);
-    }
-    .license-card h3 {
-      color: var(--green-deep);
-      font-size: 1.05rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-    .state-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      list-style: none;
-    }
-    .state-list li {
-      background: #fff;
-      border: 1px solid var(--line);
-      color: var(--green-deep);
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.4rem 0.8rem;
-      border-radius: 4px;
-    }
-
     /* CTA BAND */
     .cta-band {
       background: var(--green-dark);
@@ -330,7 +294,6 @@
       .hero .wrap { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; max-width: 400px; }
       .industries-grid { grid-template-columns: repeat(2, 1fr); }
-      .licensing .wrap { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
     }
@@ -351,7 +314,6 @@
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#industries">Industries</a></li>
-        <li><a href="#licensing">Licensing</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="#contact" class="nav-cta">Contact Us</a></li>
       </ul>
@@ -410,14 +372,14 @@
           <img src="assets/service-plumbing.jpg" alt="Commercial plumbing">
           <div class="service-card-body">
             <h3>Plumbing</h3>
-            <p>Full-scope commercial &amp; industrial plumbing, from rough-in to final tie-in.</p>
+            <p>Full-scope commercial &amp; industrial plumbing.</p>
           </div>
         </div>
         <div class="service-card">
           <img src="assets/service-mechanical.jpg" alt="Mechanical">
           <div class="service-card-body">
             <h3>Mechanical</h3>
-            <p>Licensed mechanical contracting to complement plumbing scope on the same job.</p>
+            <p>Full-scope commercial &amp; industrial mechanical contracting.</p>
           </div>
         </div>
       </div>
@@ -441,31 +403,9 @@
     </div>
   </section>
 
-  <section class="licensing" id="licensing">
-    <div class="wrap">
-      <div style="grid-column:1/-1" class="section-head">
-        <span class="eyebrow">Credentials</span>
-        <h2>Licensed to work across the Southeast.</h2>
-        <p>Multi-state licensing means we can follow your projects across state lines.</p>
-      </div>
-      <div class="license-card">
-        <h3>Plumbing License</h3>
-        <ul class="state-list">
-          <li>Alabama</li><li>Georgia</li><li>Tennessee</li><li>Mississippi</li><li>Florida</li><li>Texas</li>
-        </ul>
-      </div>
-      <div class="license-card">
-        <h3>Mechanical License</h3>
-        <ul class="state-list">
-          <li>Alabama</li><li>Mississippi</li><li>Tennessee</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
   <section class="cta-band" id="contact">
     <div class="wrap">
-      <h2>Bidding a job or need a licensed sub on short notice?</h2>
+      <h2>Bidding a job?</h2>
       <p>2605 Decatur Highway, Gardendale, AL 35071 &nbsp;&middot;&nbsp; M&ndash;F, 8:00 AM&ndash;4:00 PM</p>
       <div class="hero-actions">
         <a href="tel:2056314343" class="btn btn-primary">Call 205-631-4343</a>
@@ -486,7 +426,6 @@
           <ul>
             <li><a href="#services">Services</a></li>
             <li><a href="#industries">Industries</a></li>
-            <li><a href="#licensing">Licensing</a></li>
             <li><a href="careers.html">Careers</a></li>
           </ul>
         </div>
