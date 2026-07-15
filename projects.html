@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Past Projects | Plumcore</title>
+  <style>
+    :root {
+      --green-dark: #29442A;
+      --green-deep: #1e3320;
+      --green-sage: #ACB575;
+      --green-mid: #60905F;
+      --ink: #202324;
+      --gray: #5b6260;
+      --line: #dde3dd;
+      --paper: #f7f8f5;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--green-deep);
+      color: #d8ddd1;
+      font-size: 0.85rem;
+    }
+    .topbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 38px;
+    }
+    .topbar a { text-decoration: none; color: #eef1e9; font-weight: 600; }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+    }
+    .logo img { height: 54px; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+    }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links a.active { color: var(--green-dark); }
+
+    .nav-cta {
+      background: var(--green-dark);
+      color: #fff !important;
+      padding: 0.65rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--green-deep); }
+
+    /* PAGE HERO */
+    .page-hero {
+      background:
+        linear-gradient(120deg, rgba(30,51,32,0.94), rgba(41,68,42,0.88)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 40px);
+      color: #fff;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      display: inline-block;
+      color: var(--green-sage);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.9rem; }
+    .page-hero p { color: #dde3d6; max-width: 60ch; margin: 0 auto; font-size: 1.05rem; }
+
+    /* PROJECTS */
+    section.projects { padding: 4.5rem 0 5rem; }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.3rem;
+    }
+    .project-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      padding: 1.3rem 1.4rem;
+      transition: box-shadow 0.15s, transform 0.15s;
+    }
+    .project-card:hover { box-shadow: 0 10px 24px rgba(41,68,42,0.14); transform: translateY(-3px); }
+    .project-tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 0.7rem;
+    }
+    .project-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.2rem 0.5rem;
+    }
+    .project-tag.plumbing {
+      color: #3f6b8f;
+      background: #eef4f8;
+      border-color: #cfe0ea;
+    }
+    .project-card h3 { font-size: 1.05rem; color: var(--green-deep); margin-bottom: 0.35rem; }
+    .project-card .loc { font-size: 0.9rem; color: var(--gray); }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 0;
+    }
+    .cta-band h2 { font-size: 1.9rem; margin-bottom: 0.8rem; font-weight: 800; }
+    .cta-band p { color: #dbe1d3; margin-bottom: 2rem; font-size: 1.05rem; }
+    .cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.7rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.98rem;
+      border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--green-sage); color: var(--green-deep); }
+    .btn-primary:hover { background: #bcc688; }
+    .btn-outline { border-color: rgba(255,255,255,0.55); color: #fff; }
+    .btn-outline:hover { border-color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: var(--green-deep);
+      color: #c8d0c0;
+      padding: 3.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    footer .logo-wrap img { height: 40px; margin-bottom: 1rem; filter: brightness(0) invert(1); opacity: 0.92; }
+    footer h4 { color: #fff; font-size: 0.95rem; margin-bottom: 1rem; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 0.6rem; }
+    footer a { text-decoration: none; color: #c8d0c0; }
+    footer a:hover { color: #fff; }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #93a08a;
+    }
+
+    @media (max-width: 900px) {
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .topbar { font-size: 0.72rem; }
+      .topbar .wrap {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem 0;
+        padding: 0.5rem 2rem;
+        text-align: center;
+      }
+      .topbar .licenses { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span class="licenses">AL GC&#35;44401 &nbsp;·&nbsp; AL HVAC&#35;24218 &nbsp;·&nbsp; AL Plumbing&#35;EMP-1904 &nbsp;·&nbsp; 100% OSHA 30 certified crews</span>
+      <a href="tel:2056314343">205-631-4343</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><img src="assets/logo.png" alt="Plumcore logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#industries">Industries</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Capability Statement</span>
+      <h1>Past Projects</h1>
+    </div>
+  </section>
+
+  <section class="projects">
+    <div class="wrap">
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>15-16A Office Park</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>15,16,17 Office Park</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>16th Street Baptist Church</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>17 Office Park</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>32 Music Lounge</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>500 Office Park</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>A.P.C.O. Employee Credit Union</h3>
+          <p class="loc">Jasper, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>A.S.C.T.E.</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Advanced Auto Parts Birmingham</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Alabama Opthamology</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Amsouth Bank (Regions Bank Building)</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Anvil Pub</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Archwell</h3>
+          <p class="loc">Montgomery, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Aritzia</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>ARMS Behavioral</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Ashley Mac</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Audi</h3>
+          <p class="loc">Irondale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Avalon Place</h3>
+          <p class="loc">Muscle Shoals, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Bank of America</h3>
+          <p class="loc">Gardendale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Beaty Lavish</h3>
+          <p class="loc">Jasper, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Birmingham Luxury Motors (Homewood)</h3>
+          <p class="loc">Homewood, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Birmingham OBGYN</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Blount County Multi-Purpose Building</h3>
+          <p class="loc">Cleveland, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Blue Cross Blue Shield Hoover</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Blue Lake MRI</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>BODROK</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Brick &amp; Tin</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Caliber Collision</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Chase Bank</h3>
+          <p class="loc">Dothan, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Christ Health YMCA</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Cloverdale</h3>
+          <p class="loc">Montgomery, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Community Food Bank</h3>
+          <p class="loc">Bessemer, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Cookie Fix</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Corporate America Credit Union- Water Service</h3>
+          <p class="loc">Irondale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands Auburn</h3>
+          <p class="loc">Auburn, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands Dream Center</h3>
+          <p class="loc">Montgomery, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands North Entry</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands Oxford</h3>
+          <p class="loc">Oxford, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands Riverchase</h3>
+          <p class="loc">Pelham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands Village Building A</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Church of the Highlands Villages</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Cougar Crossing</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Craft&#39;s Chicken</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Crest Honda</h3>
+          <p class="loc">Nashville, TN</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>CRI Restroom Renovation</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Cullman Middle School</h3>
+          <p class="loc">Cullman, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Dance Studio</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Darragh</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Dawson Church</h3>
+          <p class="loc">Homewood, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Denton Law</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Eldeco</h3>
+          <p class="loc">Pelham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Enon Baptist Church</h3>
+          <p class="loc">Morris, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>EOC Guntersville</h3>
+          <p class="loc">Guntersville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Express Oil Arab</h3>
+          <p class="loc">Arab, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Express Oil Manchester</h3>
+          <p class="loc">Manchester, TN</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Express Oil Scottsboro</h3>
+          <p class="loc">Scottsboro, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Fall Line Club Operations Lodge 1</h3>
+          <p class="loc">Mauk, GA</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>First South Farm Credit</h3>
+          <p class="loc">Prattville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Fives</h3>
+          <p class="loc">Pinson, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Fluid Solution</h3>
+          <p class="loc">Irondale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Genesis</h3>
+          <p class="loc">Montgomery, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>GP6 Athens</h3>
+          <p class="loc">Athens, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>GP6 Birmingham</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Gray Corp Logistics</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>GW Systems</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Harvest</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Hoover Collision</h3>
+          <p class="loc">Bessemer, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>House of Raeford</h3>
+          <p class="loc">Vienna, GA</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Huntsville First Baptist Church</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Hyundai Montgomery</h3>
+          <p class="loc">Montgomery, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>JeffMet</h3>
+          <p class="loc">McCalla, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Jimmie Hale Mission</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Jordan Excavating</h3>
+          <p class="loc">Alabaster, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Joyland Avondale</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Junior Achievement</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Kia Greenway</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>King Acura</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>L.A. Bikini</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Lakeshore Pavillion</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Little Luna</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>LuLu Lemon</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Mayco</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Maynard Nexson</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Medley - Stage</h3>
+          <p class="loc">Johns Creek, GA</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Medley- Building 2110</h3>
+          <p class="loc">Johns Creek, GA</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Miller Valve</h3>
+          <p class="loc">Homewood, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Minnie&#39;s Indoor Golf</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Mountaintop Church</h3>
+          <p class="loc">Vestavia Hills, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>MSE Building Co.</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Nothing Bundt Cakes</h3>
+          <p class="loc">Alabaster, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Nucor Tubular Products</h3>
+          <p class="loc">Decatur, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Office Park</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Pants Store Oxford MS</h3>
+          <p class="loc">Oxford, MS</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Peak Seasons</h3>
+          <p class="loc">Irondale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Peter Millar Retail</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Phenix City Foods</h3>
+          <p class="loc">Phenix City, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Porter White</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>PrintsWell</h3>
+          <p class="loc">Pelham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Project Rock Phase II</h3>
+          <p class="loc">Location not on file</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Randolph</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Redstone Federal Credit Union</h3>
+          <p class="loc">Meridianville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Regions 22nd Floor</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Rescue Mission</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Royal Lagoon</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Salvation Army Columbus GA</h3>
+          <p class="loc">Columbus, GA</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Southern Energy Credit Union</h3>
+          <p class="loc">Gardendale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Southwood Developement</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Saint Bernard Abbey</h3>
+          <p class="loc">Cullman, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>St. Mary</h3>
+          <p class="loc">Location not on file</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>St.George Melkite</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Steris</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Steris Ops</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Studio</h3>
+          <p class="loc">Homewood, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Taziki&#39;s</h3>
+          <p class="loc">Huntsville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>Taziki&#39;s</h3>
+          <p class="loc">Jasper, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Tecovas</h3>
+          <p class="loc">Alpharetta, GA</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Tecovas Franklin TN</h3>
+          <p class="loc">Franklin, TN</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>The Picklr</h3>
+          <p class="loc">Vestavia Hills, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Thompson Tractor</h3>
+          <p class="loc">Pinson, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Tom Williams BMW</h3>
+          <p class="loc">Irondale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Tom Williams Land Rover</h3>
+          <p class="loc">Irondale, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Trussville First Baptist Church</h3>
+          <p class="loc">Trussville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Trussville Municiple</h3>
+          <p class="loc">Trussville, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>U-Haul Auburn</h3>
+          <p class="loc">Auburn, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>U-Haul Madison</h3>
+          <p class="loc">Madison, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>UAB Lyons Harrison 9th Flr Reno</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag">Mechanical</span></div>
+          <h3>UAB Volker Hall</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Unlimited Terrain</h3>
+          <p class="loc">Mount Olive, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Urban Center</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Vestavia Church of Christ</h3>
+          <p class="loc">Vestavia Hills, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Vestavia United Methodist Church</h3>
+          <p class="loc">Vestavia Hills, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Village Dermatology</h3>
+          <p class="loc">Mountain Brook, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Village Green</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Welch Group</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Wells Fargo Birmingham</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>West End Hills</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>Woodward Building</h3>
+          <p class="loc">Birmingham, AL</p>
+        </div>
+        <div class="project-card">
+          <div class="project-tags"><span class="project-tag plumbing">Plumbing</span></div>
+          <h3>YMCA</h3>
+          <p class="loc">Hoover, AL</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="contact">
+    <div class="wrap">
+      <h2>Bidding a job?</h2>
+      <p>2605 Decatur Highway, Gardendale, AL 35071 &nbsp;&middot;&nbsp; M&ndash;F, 8:00 AM&ndash;4:00 PM</p>
+      <div class="cta-actions">
+        <a href="tel:2056314343" class="btn btn-primary">Call 205-631-4343</a>
+        <a href="mailto:info@plumcore.com" class="btn btn-outline">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Plumcore logo">
+          <p>Commercial &amp; industrial plumbing and mechanical contractor serving the Southeast for 40 years.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="index.html#industries">Industries</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="careers.html">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:2056314343">205-631-4343</a></li>
+            <li>2605 Decatur Highway<br>Gardendale, AL 35071</li>
+            <li>PO Box 1188, Gardendale, AL 35071</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Monday &ndash; Friday</li>
+            <li>8:00 AM &ndash; 4:00 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Plumcore. All rights reserved.</span>
+        <span>2605 Decatur Highway, Gardendale, AL</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -297,13 +297,25 @@
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
     }
+    @media (max-width: 640px) {
+      .topbar { font-size: 0.72rem; }
+      .topbar .wrap {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem 0;
+        padding: 0.5rem 2rem;
+        text-align: center;
+      }
+      .topbar .licenses { width: 100%; }
+    }
   </style>
 </head>
 <body>
 
   <div class="topbar">
     <div class="wrap">
-      <span class="licenses">40 years in business &nbsp;·&nbsp; Licensed in 6 states &nbsp;·&nbsp; 100% OSHA 30 certified crews</span>
+      <span class="licenses">AL GC&#35;44401 &nbsp;·&nbsp; AL HVAC&#35;24218 &nbsp;·&nbsp; AL Plumbing&#35;EMP-1904 &nbsp;·&nbsp; 100% OSHA 30 certified crews</span>
       <a href="tel:2056314343">205-631-4343</a>
     </div>
   </div>
@@ -314,6 +326,7 @@
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
         <li><a href="#industries">Industries</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="#contact" class="nav-cta">Contact Us</a></li>
       </ul>
@@ -426,6 +439,7 @@
           <ul>
             <li><a href="#services">Services</a></li>
             <li><a href="#industries">Industries</a></li>
+            <li><a href="projects.html">Projects</a></li>
             <li><a href="careers.html">Careers</a></li>
           </ul>
         </div>
