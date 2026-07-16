@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trenchless Pipe Lining | Plumcore</title>
+  <style>
+    :root {
+      --green-dark: #29442A;
+      --green-deep: #1e3320;
+      --green-sage: #ACB575;
+      --green-mid: #60905F;
+      --ink: #202324;
+      --gray: #5b6260;
+      --line: #dde3dd;
+      --paper: #f7f8f5;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--green-deep);
+      color: #d8ddd1;
+      font-size: 0.85rem;
+    }
+    .topbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 38px;
+    }
+    .topbar a { text-decoration: none; color: #eef1e9; font-weight: 600; }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+    }
+    .logo img { height: 54px; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+    }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links a.active { color: var(--green-dark); }
+
+    .nav-cta {
+      background: var(--green-dark);
+      color: #fff !important;
+      padding: 0.65rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--green-deep); }
+
+    /* BANNER HERO */
+    .lining-banner {
+      position: relative;
+      overflow: hidden;
+    }
+    .lining-banner img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: block;
+    }
+    .lining-banner-text {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(30,51,32,0.88) 0%, rgba(30,51,32,0.5) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 2rem;
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--green-sage);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .lining-banner-text h1 {
+      color: #fff;
+      font-size: 2.4rem;
+      font-weight: 800;
+      max-width: 22ch;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .lining-banner-text p {
+      color: #dde3d6;
+      max-width: 48ch;
+      font-size: 1.05rem;
+    }
+    @media (min-width: 1180px) {
+      .lining-banner-text { padding-left: calc((100vw - 1180px) / 2 + 2rem); }
+    }
+
+    /* CONTENT */
+    section { padding: 4rem 0; }
+    h2 {
+      font-size: 1.6rem;
+      color: var(--green-deep);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    h3 {
+      font-size: 1.2rem;
+      color: var(--green-deep);
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+    section p { color: var(--gray); margin-bottom: 1rem; max-width: 72ch; }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .lining-figure { margin: 0; }
+    .lining-figure img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      border: 1px solid var(--line);
+    }
+    .lining-figure figcaption {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+
+    /* PROBLEMS */
+    .problems { background: var(--paper); }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.3rem;
+      margin-top: 2rem;
+    }
+    .problem-tile {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.4rem 1.3rem;
+    }
+    .problem-tile h4 { font-size: 1rem; color: var(--green-dark); margin-bottom: 0.4rem; }
+    .problem-tile p { font-size: 0.88rem; color: var(--gray); margin: 0; }
+
+    /* RESIDENTIAL / COMMERCIAL SPLIT */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .split-grid img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      border: 1px solid var(--line);
+    }
+
+    /* ENVIRONMENT */
+    .enviro {
+      background: var(--green-deep);
+      color: #fff;
+    }
+    .enviro h2 { color: #fff; }
+    .enviro > .wrap > p { color: #c8d0c0; }
+    .enviro-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.3rem;
+      margin-top: 2rem;
+    }
+    .enviro-tile {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      padding: 1.4rem 1.3rem;
+      text-align: center;
+    }
+    .enviro-tile h4 { font-size: 0.95rem; color: var(--green-sage); margin-bottom: 0.4rem; }
+    .enviro-tile p { font-size: 0.85rem; color: #c8d0c0; margin: 0; }
+
+    /* CTA BAND */
+    .cta-band {
+      background: var(--green-dark);
+      color: #fff;
+      text-align: center;
+    }
+    .cta-band h2 { color: #fff; font-size: 1.9rem; margin-bottom: 0.8rem; }
+    .cta-band p { color: #dbe1d3; margin: 0 auto 2rem; font-size: 1.05rem; }
+    .cta-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.7rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.98rem;
+      border: 2px solid transparent;
+    }
+    .btn-primary { background: var(--green-sage); color: var(--green-deep); }
+    .btn-primary:hover { background: #bcc688; }
+    .btn-outline { border-color: rgba(255,255,255,0.55); color: #fff; }
+    .btn-outline:hover { border-color: #fff; }
+
+    /* FOOTER */
+    footer {
+      background: var(--green-deep);
+      color: #c8d0c0;
+      padding: 3.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    footer .logo-wrap img { height: 40px; margin-bottom: 1rem; filter: brightness(0) invert(1); opacity: 0.92; }
+    footer h4 { color: #fff; font-size: 0.95rem; margin-bottom: 1rem; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 0.6rem; }
+    footer a { text-decoration: none; color: #c8d0c0; }
+    footer a:hover { color: #fff; }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #93a08a;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .intro-grid, .split-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .problems-grid, .enviro-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .lining-banner img { height: 320px; }
+      .lining-banner-text h1 { font-size: 1.7rem; }
+    }
+    @media (max-width: 640px) {
+      .problems-grid, .enviro-grid { grid-template-columns: 1fr; }
+      .topbar { font-size: 0.72rem; }
+      .topbar .wrap {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem 0;
+        padding: 0.5rem 2rem;
+        text-align: center;
+      }
+      .topbar .licenses { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span class="licenses">AL GC&#35;44401 &nbsp;·&nbsp; AL HVAC&#35;24218 &nbsp;·&nbsp; AL Plumbing&#35;EMP-1904 &nbsp;·&nbsp; 100% OSHA 30 certified crews</span>
+      <a href="tel:2056314343">205-631-4343</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><img src="assets/logo.png" alt="Plumcore logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="pipe-lining.html" class="active">Pipe Lining</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="subcontractor-portal.html">Sub Portal</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="lining-banner">
+    <img src="assets/yard-lining9.jpg" alt="City skyline above a cross-section of buried, corroded pipe">
+    <div class="lining-banner-text">
+      <span class="eyebrow">Trenchless Pipe Lining</span>
+      <h1>Repair the pipe without destroying what's above it.</h1>
+      <p>Cured-In-Place-Pipe rehabilitation restores failing sewer and storm lines without excavation &mdash; no torn-up parking lots, landscapes, or slabs.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="intro-grid">
+        <div>
+          <h2>What is Trenchless Pipe Lining?</h2>
+          <p>Most underground pipes and systems are more than 100 years old &mdash; and pipe failure isn't determined by age alone. The load running through a pipe has increased everywhere populations have grown. Traditional &ldquo;dig and replace&rdquo; upgrades are expensive and disruptive to businesses and communities.</p>
+          <p>Trenchless pipeline rehabilitation is a highly efficient, minimally invasive alternative: a new pipe is created within the existing pipe using a special epoxy, restoring function without excavation. It addresses leaks, breaks, blockages, root intrusion, calcium build-up, water damage, mold, sewer backups, and flow capacity &mdash; and it saves our customers time and money.</p>
+          <p>Cured-In-Place-Pipe (CIPP) is widely accepted for sanitary and storm sewers: a jointless, seamless pipe-within-a-pipe that lets us rehabilitate lines in congested and environmentally sensitive areas.</p>
+        </div>
+        <figure class="lining-figure">
+          <img src="assets/before-and-after.jpg" alt="Corroded pipe before lining next to the same pipe restored with a smooth epoxy liner">
+          <figcaption>Before and after: a failing line restored with a cured-in-place epoxy liner.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="problems">
+    <div class="wrap">
+      <h2>Problems We Solve</h2>
+      <p>Lining is the right answer for most of the failure modes that take out buried pipe.</p>
+      <div class="problems-grid">
+        <div class="problem-tile">
+          <h4>Aging Sewer Lines</h4>
+          <p>Cast iron and clay lines deteriorate over decades. Lining restores them in place.</p>
+        </div>
+        <div class="problem-tile">
+          <h4>Root Intrusion</h4>
+          <p>Roots cause roughly half of all sewer blockages. A seamless liner locks them out.</p>
+        </div>
+        <div class="problem-tile">
+          <h4>Calcification</h4>
+          <p>Mineral build-up chokes flow capacity. Lining renews the full bore of the pipe.</p>
+        </div>
+        <div class="problem-tile">
+          <h4>Ground Movement</h4>
+          <p>Shifting soil cracks and separates joints. A jointless liner bridges the damage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="split-grid">
+        <div>
+          <h2>Commercial &amp; Residential</h2>
+          <p>On commercial and municipal systems, CIPP means rehabilitating sanitary and storm sewers under parking lots, slabs, and rights-of-way without shutting down the property above them.</p>
+          <p>For homeowners, the same technology repairs a failing sewer line without trenching through an established yard &mdash; the landscape, driveway, and hardscape stay intact while the pipe underneath is renewed.</p>
+        </div>
+        <img src="assets/yard-lining5.jpg" alt="House and yard above a cross-section of buried pipe, showing the line repaired without digging">
+      </div>
+    </div>
+  </section>
+
+  <section class="enviro">
+    <div class="wrap">
+      <h2>Environmental Benefits</h2>
+      <p>Cured-In-Place-Pipe is environmentally friendly.</p>
+      <div class="enviro-grid">
+        <div class="enviro-tile">
+          <h4>Less Waste</h4>
+          <p>The old pipe stays in the ground and becomes the host for the new one.</p>
+        </div>
+        <div class="enviro-tile">
+          <h4>Lower Energy Use</h4>
+          <p>No excavation equipment tearing up and hauling away material for days.</p>
+        </div>
+        <div class="enviro-tile">
+          <h4>Zero Landfill Waste</h4>
+          <p>Nothing is dug up, so nothing goes to the landfill.</p>
+        </div>
+        <div class="enviro-tile">
+          <h4>Cleaner Water</h4>
+          <p>Lining prevents heavy metals from leaching into drinking water.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band" id="contact">
+    <div class="wrap">
+      <h2>Have a failing line?</h2>
+      <p>2605 Decatur Highway, Gardendale, AL 35071 &nbsp;&middot;&nbsp; M&ndash;F, 8:00 AM&ndash;4:00 PM</p>
+      <div class="cta-actions">
+        <a href="tel:2056314343" class="btn btn-primary">Call 205-631-4343</a>
+        <a href="mailto:info@plumcore.com" class="btn btn-outline">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Plumcore logo">
+          <p>Commercial &amp; industrial plumbing and mechanical contractor serving the Southeast for 40 years.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="pipe-lining.html">Pipe Lining</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="subcontractor-portal.html">Sub Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:2056314343">205-631-4343</a></li>
+            <li>2605 Decatur Highway<br>Gardendale, AL 35071</li>
+            <li>PO Box 1188, Gardendale, AL 35071</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Monday &ndash; Friday</li>
+            <li>8:00 AM &ndash; 4:00 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Plumcore. All rights reserved.</span>
+        <span>2605 Decatur Highway, Gardendale, AL</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
