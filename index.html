@@ -202,9 +202,9 @@
     /* SERVICES */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.6rem;
-      max-width: 720px;
+      max-width: 1080px;
     }
     .service-card {
       border: 1px solid var(--line);
@@ -218,6 +218,97 @@
     .service-card-body { padding: 1.2rem 1.3rem 1.5rem; }
     .service-card-body h3 { font-size: 1.08rem; color: var(--green-deep); margin-bottom: 0.5rem; }
     .service-card-body p { font-size: 0.9rem; color: var(--gray); }
+
+    /* LINING */
+    .lining { padding: 0 0 5rem; }
+    .lining-banner {
+      position: relative;
+      overflow: hidden;
+      max-height: 380px;
+    }
+    .lining-banner img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+    .lining-banner-text {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(30,51,32,0.85) 0%, rgba(30,51,32,0.45) 55%, transparent 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 2rem;
+    }
+    .lining-banner-text .eyebrow { color: var(--green-sage); }
+    .lining-banner-text h2 {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 800;
+      max-width: 22ch;
+      line-height: 1.2;
+    }
+    @media (min-width: 1180px) {
+      .lining-banner-text { padding-left: calc((100vw - 1180px) / 2 + 2rem); }
+    }
+    .lining-content { padding-top: 3.5rem; }
+    .lining-intro {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+    .lining-intro h3 {
+      font-size: 1.4rem;
+      color: var(--green-deep);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .lining-intro p { color: var(--gray); margin-bottom: 1rem; }
+    .lining-figure { margin: 0; }
+    .lining-figure img {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+      border: 1px solid var(--line);
+    }
+    .lining-figure figcaption {
+      font-size: 0.82rem;
+      color: var(--gray);
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+    .lining-problems h3 {
+      font-size: 1.25rem;
+      color: var(--green-deep);
+      font-weight: 800;
+      margin-bottom: 1.4rem;
+    }
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.3rem;
+    }
+    .problem-tile {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.3rem 1.2rem;
+    }
+    .problem-tile h4 { font-size: 0.98rem; color: var(--green-dark); margin-bottom: 0.4rem; }
+    .problem-tile p { font-size: 0.88rem; color: var(--gray); }
+    .lining-enviro {
+      margin-top: 2.5rem;
+      padding: 1.2rem 1.4rem;
+      background: var(--paper);
+      border-left: 4px solid var(--green-sage);
+      border-radius: 0 8px 8px 0;
+      color: var(--gray);
+      font-size: 0.95rem;
+      max-width: 72ch;
+    }
 
     /* INDUSTRIES */
     .industries {
@@ -296,6 +387,13 @@
       .industries-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
       .nav-links { display: none; }
+      .lining-intro { grid-template-columns: 1fr; gap: 2rem; }
+      .problems-grid { grid-template-columns: repeat(2, 1fr); }
+      .lining-banner img { height: 300px; }
+      .lining-banner-text h2 { font-size: 1.5rem; }
+    }
+    @media (max-width: 560px) {
+      .problems-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .topbar { font-size: 0.72rem; }
@@ -395,7 +493,63 @@
             <p>Full-scope commercial &amp; industrial mechanical contracting.</p>
           </div>
         </div>
+        <div class="service-card">
+          <a href="#lining" style="text-decoration:none; color:inherit;">
+            <img src="assets/service-lining.jpg" alt="Trenchless pipe lining before and after">
+            <div class="service-card-body">
+              <h3>Trenchless Pipe Lining</h3>
+              <p>Rehabilitate failing pipe without digging it up.</p>
+            </div>
+          </a>
+        </div>
       </div>
+    </div>
+  </section>
+
+  <section class="lining" id="lining">
+    <div class="lining-banner">
+      <img src="assets/yard-lining9.jpg" alt="City skyline above a cross-section of buried pipe">
+      <div class="lining-banner-text">
+        <span class="eyebrow">Trenchless Pipe Lining</span>
+        <h2>Repair the pipe without destroying what's above it.</h2>
+      </div>
+    </div>
+    <div class="wrap lining-content">
+      <div class="lining-intro">
+        <div>
+          <h3>What is Trenchless Pipe Lining?</h3>
+          <p>Most underground pipes and systems are more than 100 years old &mdash; and pipe failure isn't determined by age alone. The load running through a pipe has increased everywhere populations have grown. Traditional &ldquo;dig and replace&rdquo; upgrades are expensive and disruptive to businesses and communities.</p>
+          <p>Trenchless pipeline rehabilitation is a highly efficient, minimally invasive alternative: a new pipe is created within the existing pipe using a special epoxy, restoring function without excavation. Cured-In-Place-Pipe (CIPP) is widely accepted for sanitary and storm sewers &mdash; a jointless, seamless pipe-within-a-pipe that lets us rehabilitate lines in congested and environmentally sensitive areas.</p>
+        </div>
+        <figure class="lining-figure">
+          <img src="assets/before-and-after.jpg" alt="Corroded pipe before lining next to the same pipe restored with a smooth epoxy liner">
+          <figcaption>Before and after: a failing line restored with a cured-in-place epoxy liner.</figcaption>
+        </figure>
+      </div>
+
+      <div class="lining-problems">
+        <h3>Problems We Solve</h3>
+        <div class="problems-grid">
+          <div class="problem-tile">
+            <h4>Aging Sewer Lines</h4>
+            <p>Cast iron and clay lines deteriorate over decades. Lining restores them in place.</p>
+          </div>
+          <div class="problem-tile">
+            <h4>Root Intrusion</h4>
+            <p>Roots cause roughly half of all sewer blockages. A seamless liner locks them out.</p>
+          </div>
+          <div class="problem-tile">
+            <h4>Calcification</h4>
+            <p>Mineral build-up chokes flow capacity. Lining renews the full bore of the pipe.</p>
+          </div>
+          <div class="problem-tile">
+            <h4>Ground Movement</h4>
+            <p>Shifting soil cracks and separates joints. A jointless liner bridges the damage.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="lining-enviro">Cured-In-Place-Pipe is environmentally friendly, too &mdash; less waste, lower energy consumption, zero landfill waste, and it prevents heavy metals from leaching into drinking water.</p>
     </div>
   </section>
 
