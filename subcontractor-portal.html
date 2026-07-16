@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subcontractor Portal | Plumcore</title>
+  <style>
+    :root {
+      --green-dark: #29442A;
+      --green-deep: #1e3320;
+      --green-sage: #ACB575;
+      --green-mid: #60905F;
+      --ink: #202324;
+      --gray: #5b6260;
+      --line: #dde3dd;
+      --paper: #f7f8f5;
+      --white: #ffffff;
+      --amber: #9a6300;
+      --amber-bg: #fdf3df;
+      --amber-line: #eeddb0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      background: var(--green-deep);
+      color: #d8ddd1;
+      font-size: 0.85rem;
+    }
+    .topbar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 38px;
+    }
+    .topbar a { text-decoration: none; color: #eef1e9; font-weight: 600; }
+
+    /* NAV */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+    }
+    .logo img { height: 54px; display: block; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.2px;
+    }
+    .nav-links a:hover { color: var(--green-dark); }
+    .nav-links a.active { color: var(--green-dark); }
+
+    .nav-cta {
+      background: var(--green-dark);
+      color: #fff !important;
+      padding: 0.65rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 700 !important;
+    }
+    .nav-cta:hover { background: var(--green-deep); }
+
+    /* PAGE HERO */
+    .page-hero {
+      background:
+        linear-gradient(120deg, rgba(30,51,32,0.94), rgba(41,68,42,0.88)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.03) 0 2px, transparent 2px 40px);
+      color: #fff;
+      padding: 4rem 0;
+      text-align: center;
+    }
+    .page-hero .eyebrow {
+      display: inline-block;
+      color: var(--green-sage);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.9rem; }
+    .page-hero p { color: #dde3d6; max-width: 60ch; margin: 0 auto; font-size: 1.05rem; }
+
+    /* FORM SECTION */
+    section.form-section { padding: 3.5rem 0 5rem; }
+    .form-wrap { max-width: 760px; margin: 0 auto; }
+
+    .notice {
+      background: var(--amber-bg);
+      border: 1px solid var(--amber-line);
+      border-radius: 8px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.94rem;
+      color: #6b4c00;
+    }
+    .notice strong { color: var(--amber); }
+
+    .form-card {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 2rem 2.2rem 2.4rem;
+      background: #fff;
+    }
+    .form-card h2 {
+      font-size: 1.15rem;
+      color: var(--green-deep);
+      margin-bottom: 0.3rem;
+    }
+    .form-card > p.sub {
+      color: var(--gray);
+      font-size: 0.92rem;
+      margin-bottom: 1.8rem;
+    }
+
+    fieldset {
+      border: none;
+      margin-bottom: 1.8rem;
+      padding: 0;
+    }
+    fieldset legend {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--green-mid);
+      margin-bottom: 0.9rem;
+      padding: 0;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.2rem;
+    }
+    .field { display: flex; flex-direction: column; gap: 0.4rem; }
+    .field.full { grid-column: 1 / -1; }
+    .field label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .field .hint { font-size: 0.78rem; color: var(--gray); font-weight: 400; }
+    .field input[type="text"],
+    .field input[type="email"],
+    .field input[type="tel"],
+    .field textarea,
+    .field select {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.65rem 0.8rem;
+      font-size: 0.92rem;
+      font-family: inherit;
+      color: var(--ink);
+      background: var(--paper);
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      outline: 2px solid var(--green-mid);
+      outline-offset: 1px;
+      background: #fff;
+    }
+    .field textarea { resize: vertical; min-height: 80px; }
+
+    .file-field {
+      border: 1px dashed var(--line);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      background: var(--paper);
+    }
+    .file-field label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    .file-field .hint { display: block; margin-bottom: 0.55rem; }
+    .file-field input[type="file"] { font-size: 0.85rem; width: 100%; }
+
+    .submit-row { margin-top: 2rem; }
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.9rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.98rem;
+      border: 2px solid transparent;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary { background: var(--green-dark); color: #fff; }
+    .btn-primary:hover { background: var(--green-deep); }
+
+    .form-status {
+      display: none;
+      margin-top: 1.2rem;
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      color: var(--ink);
+    }
+    .form-status.show { display: block; }
+    .form-status a { color: var(--green-dark); font-weight: 700; }
+
+    @media (max-width: 640px) {
+      .field-grid { grid-template-columns: 1fr; }
+      .form-card { padding: 1.6rem 1.3rem 2rem; }
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--green-deep);
+      color: #c8d0c0;
+      padding: 3.5rem 0 2rem;
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    footer .logo-wrap img { height: 40px; margin-bottom: 1rem; filter: brightness(0) invert(1); opacity: 0.92; }
+    footer h4 { color: #fff; font-size: 0.95rem; margin-bottom: 1rem; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 0.6rem; }
+    footer a { text-decoration: none; color: #c8d0c0; }
+    footer a:hover { color: #fff; }
+    .footer-bottom {
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: #93a08a;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 640px) {
+      .topbar { font-size: 0.72rem; }
+      .topbar .wrap {
+        height: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem 0;
+        padding: 0.5rem 2rem;
+        text-align: center;
+      }
+      .topbar .licenses { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap">
+      <span class="licenses">AL GC&#35;44401 &nbsp;·&nbsp; AL HVAC&#35;24218 &nbsp;·&nbsp; AL Plumbing&#35;EMP-1904 &nbsp;·&nbsp; 100% OSHA 30 certified crews</span>
+      <a href="tel:2056314343">205-631-4343</a>
+    </div>
+  </div>
+
+  <header>
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><img src="assets/logo.png" alt="Plumcore logo"></a>
+      <ul class="nav-links">
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="subcontractor-portal.html" class="active">Sub Portal</a></li>
+        <li><a href="index.html#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow">Subcontractors &amp; Suppliers</span>
+      <h1>Subcontractor Portal</h1>
+      <p>Submit your Certificate of Insurance, indemnity agreement, and other compliance documents so we can keep your file current.</p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="wrap">
+      <div class="form-wrap">
+
+        <div class="notice">
+          <strong>This portal isn't fully connected yet.</strong> Document uploads submitted below aren't being received automatically while we finish setting up our subcontractor email. In the meantime, please email your documents directly to <a href="mailto:info@plumcore.com">info@plumcore.com</a> or call <a href="tel:2056314343">205-631-4343</a>.
+        </div>
+
+        <div class="form-card">
+          <h2>Submit Your Documentation</h2>
+          <p class="sub">Fields marked required help us route your file to the right project. All documents are kept on file for insurance and compliance purposes only.</p>
+
+          <form id="subForm">
+            <fieldset>
+              <legend>Company Information</legend>
+              <div class="field-grid">
+                <div class="field">
+                  <label for="company">Company Name *</label>
+                  <input type="text" id="company" name="company" required>
+                </div>
+                <div class="field">
+                  <label for="trade">Trade / Scope of Work *</label>
+                  <input type="text" id="trade" name="trade" placeholder="e.g. Excavation, Fire Protection" required>
+                </div>
+                <div class="field">
+                  <label for="contact">Contact Name *</label>
+                  <input type="text" id="contact" name="contact" required>
+                </div>
+                <div class="field">
+                  <label for="phone">Phone *</label>
+                  <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="field full">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div class="field full">
+                  <label for="project">Related Project <span class="hint">(if this is for a specific job)</span></label>
+                  <input type="text" id="project" name="project">
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Documents</legend>
+              <div class="field-grid">
+                <div class="field full file-field">
+                  <label for="coi">Certificate of Insurance (COI)</label>
+                  <span class="hint">PDF preferred. Must list Plumcore as certificate holder.</span>
+                  <input type="file" id="coi" name="coi" accept=".pdf,.doc,.docx,.jpg,.png">
+                </div>
+                <div class="field full file-field">
+                  <label for="indemnity">Signed Indemnity / Hold Harmless Agreement</label>
+                  <span class="hint">PDF preferred.</span>
+                  <input type="file" id="indemnity" name="indemnity" accept=".pdf,.doc,.docx,.jpg,.png">
+                </div>
+                <div class="field full file-field">
+                  <label for="w9">W-9</label>
+                  <span class="hint">Optional, but speeds up setup for new vendors.</span>
+                  <input type="file" id="w9" name="w9" accept=".pdf,.doc,.docx,.jpg,.png">
+                </div>
+                <div class="field full file-field">
+                  <label for="other">Other Documents</label>
+                  <span class="hint">Licenses, safety certifications, etc. Optional.</span>
+                  <input type="file" id="other" name="other" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Notes</legend>
+              <div class="field-grid">
+                <div class="field full">
+                  <label for="notes">Anything else we should know? <span class="hint">(optional)</span></label>
+                  <textarea id="notes" name="notes"></textarea>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="submit-row">
+              <button type="submit" class="btn btn-primary">Submit Documentation</button>
+            </div>
+
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="logo-wrap">
+          <img src="assets/logo.png" alt="Plumcore logo">
+          <p>Commercial &amp; industrial plumbing and mechanical contractor serving the Southeast for 40 years.</p>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="index.html#services">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="subcontractor-portal.html">Sub Portal</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="tel:2056314343">205-631-4343</a></li>
+            <li>2605 Decatur Highway<br>Gardendale, AL 35071</li>
+            <li>PO Box 1188, Gardendale, AL 35071</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Hours</h4>
+          <ul>
+            <li>Monday &ndash; Friday</li>
+            <li>8:00 AM &ndash; 4:00 PM</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Plumcore. All rights reserved.</span>
+        <span>2605 Decatur Highway, Gardendale, AL</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('subForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var status = document.getElementById('formStatus');
+      status.innerHTML = 'This portal is still being connected on our end, so nothing was sent. Please email your documents directly to <a href="mailto:info@plumcore.com">info@plumcore.com</a> or call <a href="tel:2056314343">205-631-4343</a> for now &mdash; sorry for the inconvenience.';
+      status.classList.add('show');
+      status.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  </script>
+
+</body>
+</html>
