@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /subcontractor-portal.html
+
+Sitemap: https://plumcore.com/sitemap.xml
